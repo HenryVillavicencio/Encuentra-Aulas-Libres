@@ -15,7 +15,7 @@ class CardClass extends Component {
                     <Text style={{ fontSize: 23, color: 'gray' }}>{this.props.hora > 12 ? "PM": "AM"}</Text>
                 </View>
                 <Card transparent style={{ width: width * 0.75, marginLeft: 16 }} >
-                    <CardItem style={{ backgroundColor: 'blue', borderRadius: 10 }} >
+                    <CardItem style={{ backgroundColor: '#2196f3', borderRadius: 10 }} >
                         <Body >
                             <FlatList
                                 data={this.props.clases}

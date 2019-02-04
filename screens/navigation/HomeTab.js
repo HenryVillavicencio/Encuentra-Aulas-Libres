@@ -10,7 +10,7 @@ const HomeTab = createMaterialTopTabNavigator(
             screen: Home,
             navigationOptions:{
                 tabBarIcon: ({ tintColor }) => (
-                    <Icon name="home" size={30} color="#900" />
+                    <Icon name="home"  style={{color:'white'}} />
                   )
             }
         },
@@ -18,7 +18,7 @@ const HomeTab = createMaterialTopTabNavigator(
             screen: Profile,
             navigationOptions:{
                 tabBarIcon: ({ tintColor }) => (
-                    <Icon name="home" size={30} color="#900" />
+                    <Icon  type="FontAwesome5" name="user" style={{color:'white'}} />
                   )
             }
         }

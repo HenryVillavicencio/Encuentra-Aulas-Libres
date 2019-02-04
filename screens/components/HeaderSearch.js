@@ -76,7 +76,7 @@ class HeaderSearch extends Component {
                                 {this.state.interval.from ? this.timeFormat(this.state.interval.from) : "Inicio"}
                             </Text>
                         </Left>
-                        <Icon active name='home' />
+                        <Icon active type='MaterialCommunityIcons' name='clock-start' />
                     </Button>
                     <Button style={{ flex: 1 }} block bordered rounded onPress={this._showDateTimePickerTo}>
                         <Left style={{ paddingLeft: 10 }}>
@@ -84,7 +84,7 @@ class HeaderSearch extends Component {
                                 {this.state.interval.to ? this.timeFormat(this.state.interval.to) : "Fin"}
                             </Text>
                         </Left>
-                        <Icon active name='home' />
+                        <Icon active type='MaterialCommunityIcons' name='clock-end' />
                     </Button>
                 </Body>
                 <DateTimePicker
