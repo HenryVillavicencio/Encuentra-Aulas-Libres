@@ -22,13 +22,16 @@ class Home extends Component {
         }
     }
 
+    handleSelection = (interval)=>{
+        console.log( horario.lunes[interval.from.getHours()-7] );
+    }
+
     render() {
         return (
             <Container>
-                <HeaderSearch/>
+                <HeaderSearch Selection={this.handleSelection}/>
                 <Text style={{ height:50, fontSize: 23, color: 'gray', alignSelf: 'center' }}>{this.getDay()}</Text>
                 <Content padder >
-
                 <FlatList
                     data={horario.lunes}
                     renderItem= {({item}) => <CardClass {...item}/>}
