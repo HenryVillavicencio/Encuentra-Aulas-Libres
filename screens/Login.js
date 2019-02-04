@@ -5,6 +5,17 @@ import Dimensions from 'Dimensions';
 var {height, width} = Dimensions.get('window');
 
 class Login extends Component {
+
+    handlePressSingup = () => {
+        this.props.navigation.navigate('Register')
+    }
+
+    handlePressSingin = () => {
+        console.log(this.props.navigation);
+        
+        this.props.navigation.navigate('HomeTab')
+    }
+
     render() {
         return (
             <Container>
@@ -21,13 +32,13 @@ class Login extends Component {
                             <Label> Contraseña </Label>
                             <Input />
                         </Item>
-                        <Button block rounded style={{ marginTop: 16, marginBottom: 20 }}>
+                        <Button onPress={this.handlePressSingin}  block rounded style={{ marginTop: 16, marginBottom: 20 }}>
                             <Text>Sing in</Text>
                         </Button>
                     </Form>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 16 }} >
                         <Text style={{color: 'gray'}}> ¿No tienes cuenta?</Text>
-                        <Text style={{color: 'blue'}}> Sing up </Text>
+                        <Text  onPress={this.handlePressSingup} style={{color: 'blue'}}> Sing up </Text>
                     </View>
                 </Content>
             </Container>

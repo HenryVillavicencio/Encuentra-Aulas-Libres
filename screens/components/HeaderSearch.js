@@ -9,7 +9,6 @@ class HeaderSearch extends Component {
 
     onFocus  = () => {
         alert('hola...... =)');
-        
     }
     render() {
         return (
