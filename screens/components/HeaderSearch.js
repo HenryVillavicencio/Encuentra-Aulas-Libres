@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Item, Button, Text, Header, Body, Right, Icon, Left } from 'native-base'
+import { Item, Button, Text, Header, Body, Right, Icon, Left, Picker, Footer, View } from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 class HeaderSearch extends Component {
@@ -19,9 +19,9 @@ class HeaderSearch extends Component {
 
     _handleDatePickedFrom = (date) => {
         const hora = date.getHours();
-        if( hora < 7 || hora >17 ){
+        if (hora < 7 || hora > 17) {
             alert("El horario de inicio debe estar entre las 7:00 y las 17:00")
-        }else{
+        } else {
             this.setState({
                 interval: {
                     from: date,
@@ -30,7 +30,7 @@ class HeaderSearch extends Component {
             })
             this.props.Selection(this.state.interval);
         }
-        
+
         this._hideDateTimePickerFrom();
     };
 
@@ -49,9 +49,9 @@ class HeaderSearch extends Component {
     _handleDatePickedTo = (date) => {
         const hora = date.getHours();
 
-        if( hora < 8 || hora >18 ){
+        if (hora < 8 || hora > 18) {
             alert("El horario de inicio debe estar entre las 8:00 y las 18:00")
-        }else{
+        } else {
 
             this.setState({
                 interval: {
@@ -65,12 +65,14 @@ class HeaderSearch extends Component {
         this._hideDateTimePickerTo();
     };
 
+    
 
     render() {
         return (
             <Header transparent searchBar >
                 <Body style={{ flexDirection: 'row' }}>
-                    <Button style={{ flex: 1 }} block bordered rounded onPress={this._showDateTimePickerFrom}>
+
+                    <Button style={{ flex: 1, margin: 10 }} block bordered rounded onPress={this._showDateTimePickerFrom}>
                         <Left style={{ paddingLeft: 10 }}>
                             <Text style={{ color: 'gray' }}>
                                 {this.state.interval.from ? this.timeFormat(this.state.interval.from) : "Inicio"}
@@ -78,7 +80,10 @@ class HeaderSearch extends Component {
                         </Left>
                         <Icon active type='MaterialCommunityIcons' name='clock-start' />
                     </Button>
-                    <Button style={{ flex: 1 }} block bordered rounded onPress={this._showDateTimePickerTo}>
+
+
+
+                    <Button style={{ flex: 1, margin: 10 }} block bordered rounded onPress={this._showDateTimePickerTo}>
                         <Left style={{ paddingLeft: 10 }}>
                             <Text style={{ color: 'gray' }}>
                                 {this.state.interval.to ? this.timeFormat(this.state.interval.to) : "Fin"}
@@ -86,7 +91,10 @@ class HeaderSearch extends Component {
                         </Left>
                         <Icon active type='MaterialCommunityIcons' name='clock-end' />
                     </Button>
+
                 </Body>
+              
+
                 <DateTimePicker
                     mode="time"
                     minuteInterval={10}
