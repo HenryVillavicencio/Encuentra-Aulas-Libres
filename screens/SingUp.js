@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { Container, Content, Form, Item, Input, Label, Button, Text } from 'native-base'
 import firebase from 'react-native-firebase'
+import validator from 'validator';
+
 
 class Register extends Component {
 
     state = {
         email: '',
+        emailError: false,
+
         password: '',
-        passverifier: '',
-        errorverifier: false,
+        passwordError: false,
+
+        passwordVerif: '',
+        passwordVerifError: false,
+
         errorMessage: ''
     }
     handleSignUp = () => {
@@ -19,47 +26,36 @@ class Register extends Component {
             .catch(error => this.setState({ errorMessage: error.message }))
     }
 
-    handlePressCreate = () => {
-       // this.handleverifier();
-        // this.props.navigation.navigate('HomeTab')
-    }
-
-    handleverifier = () => {
-        if (this.state.password == "") {
-
-            alert(this.state.errorverifier)
-            this.setState({ errorMessage: "Error! Contraseña vacia" })
-        }
-
-        else
-            if (this.state.password == this.state.passverifier)
-                this.setState({ errorverifier: false })
-            else
-                this.setState({ errorverifier: true, errorMessage: "Contraseña no coinciden" })
-    }
-
     render() {
         return (
             <Container>
                 <Content padder >
                     <Form style={{ marginTop: 16 }}>
-                        <Item floatingLabel>
+                        <Item floatingLabel
+                            error={this.state.emailError}
+                            success={validator.isEmail(this.state.email)}>
                             <Label> Correo </Label>
-                            <Input onChangeText={(email) => { this.setState({ email }) }} />
+                            <Input onChangeText={(email) => { this.setState({ email, errorMessage: '' }) }} />
                         </Item>
-                        <Item floatingLabel>
+                        <Item floatingLabel
+                            error={this.passwordError}
+                            success={validator.isAlphanumeric(this.state.password)
+                                && validator.isLength(this.state.password, { min: 6, max: 20 })}>
                             <Label> Contraseña </Label>
-                            <Input secureTextEntry onChangeText={(password) => { this.setState({ password }) }} />
+                            <Input secureTextEntry onChangeText={(password) => { this.setState({ password, errorMessage: '' }) }} />
                         </Item>
-                        <Item floatingLabel error={this.state.errorverifier} >
+                        <Item floatingLabel
+                            error={this.state.passwordVerifError}
+                            success={validator.equals(this.state.password, this.state.passwordVerif) && validator.isLength(this.state.password, { min: 6, max: 20 })}>
                             <Label> Confirmar contraseña </Label>
-                            <Input secureTextEntry onChangeText={(passverifier) => { this.setState({ passverifier }) }} />
+                            <Input secureTextEntry onChangeText={(passwordVerif) => { this.setState({ passwordVerif, errorMessage: '' }) }} />
                         </Item>
                     </Form>
-                    <Text>{this.state.errorMessage}</Text>
                     <Button onPress={this.handleSignUp} block rounded style={{ marginTop: 16, }}>
                         <Text>Sing un</Text>
                     </Button>
+                    <Text style={{ color: 'red', alignSelf: 'center' }}>{this.state.errorMessage}</Text>
+
                 </Content>
             </Container>
         )
