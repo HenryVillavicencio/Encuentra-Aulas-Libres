@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "1003963695175",
+    "firebase_url": "https://aulaslibresepn.firebaseio.com",
+    "project_id": "aulaslibresepn",
+    "storage_bucket": "aulaslibresepn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003963695175:android:cfe65d99c9713e00",
+        "android_client_info": {
+          "package_name": "com.henrymvc.poliaulaslibres"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003963695175-d3as78n1va4446jd4kd429lnkq5cogst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI426MJ-ThJBHLqhrxDtKYnRjDj4JcKHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003963695175:android:4f6d1f9b194dd29a",
+        "android_client_info": {
+          "package_name": "com.poliaulaslibres"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003963695175-d3as78n1va4446jd4kd429lnkq5cogst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI426MJ-ThJBHLqhrxDtKYnRjDj4JcKHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

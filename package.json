@@ -10,6 +10,7 @@
     "native-base": "^2.11.0",
     "react": "16.6.3",
     "react-native": "0.58.3",
+    "react-native-firebase": "^5.2.1",
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-navigation": "^2.3.1"
   },

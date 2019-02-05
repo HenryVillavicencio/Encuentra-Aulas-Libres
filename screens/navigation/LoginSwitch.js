@@ -1,13 +1,14 @@
 import { createSwitchNavigator } from 'react-navigation'
 import LoginStack from './LoginStack'
 import HomeTab from './HomeTab';
+import Loading from '../Loading'
 const LoginSwitch = createSwitchNavigator(
     {
         LoginStack,
-        HomeTab
-
+        HomeTab,
+        Loading
     },{
-        initialRouteName: "LoginStack"
+        initialRouteName: "Loading"
     }
 );
 export default LoginSwitch;
