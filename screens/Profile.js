@@ -14,7 +14,7 @@ class Register extends Component {
     render() {
         return (
             <Container>
-                <Content padder >
+                <Content padder contentContainerStyle={{ flex: 1 ,justifyContent: 'center' }} >
                     <Thumbnail square style={{ height: 150, width: 150, alignSelf: 'center' }}
                         source={require("../assets/img/Escudo_de_la_Escuela_Politécnica_Nacional.png")}
                     />
