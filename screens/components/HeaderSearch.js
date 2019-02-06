@@ -73,7 +73,6 @@ class HeaderSearch extends Component {
                         </Left>
                         <Icon active type='MaterialCommunityIcons' name='clock-end' />
                     </Button>
-
                 </Body>
                 <DateTimePicker
                     mode="time"

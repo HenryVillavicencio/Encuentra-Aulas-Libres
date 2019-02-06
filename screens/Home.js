@@ -48,6 +48,8 @@ class Home extends Component {
             data: getscheduleDay(horario, value),
             datafilter: []
         })
+
+
     }
 
     handleSelection = (from, to) => {
@@ -67,7 +69,9 @@ class Home extends Component {
     render() {
         return (
             <Container>
-                <HeaderSearch Selection={this.handleSelection} />
+                <HeaderSearch 
+                    Selection={this.handleSelection}
+                 />
                 <View style={{ width: width * 0.5, alignSelf: 'center' }}>
                     <Picker
                         selectedValue={this.state.daySelected}
@@ -89,17 +93,16 @@ class Home extends Component {
                                 <Body >
                                     <FlatList
                                         data={this.state.datafilter}
-                                        keyExtractor={(item, index) => index}
+                                        keyExtractor={(item, index) => index.toString() }
                                         renderItem={({ item }) => <Text style={{ color: 'white' }}> {item} </Text>}
                                     />
                                 </Body>
                             </CardItem>
                         </Card>
-
                     }
                     <FlatList
                         data={this.state.data}
-                        keyExtractor={(item, index) => index}
+                        keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => <CardClass{...item} />}
                     />
                 </Content>

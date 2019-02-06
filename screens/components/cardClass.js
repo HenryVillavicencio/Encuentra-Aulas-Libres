@@ -19,7 +19,7 @@ class CardClass extends Component {
                         <Body >
                             <FlatList
                                 data={this.props.clases}
-                                keyExtractor={(item, index) => index}
+                                keyExtractor={(item, index) => index.toString()}
                                 renderItem={({ item }) => <Text style={{ color: 'white' }}> {item} </Text>}
                             />
                         </Body>
