@@ -17,13 +17,6 @@ class Login extends Component {
         this.props.navigation.navigate('Register')
     }
 
-    handlePressSingin = () => {
-        console.log(this.props.navigation);
-
-    }
-
-
-    
 
     handleLogin = () => {
         const { email, password } = this.state
@@ -31,16 +24,18 @@ class Login extends Component {
             firebase
                 .auth()
                 .signInWithEmailAndPassword(email, password)
-                .then(() => this.props.navigation.navigate('HomeTab'))
-                .catch(error => {
-                    this.setState({ errorMessage: error.message })
-                    console.log(error);
-                })
-            alert(this.state.errorMessage)
+                .then(() => { })
+                .catch(error => { this.setState({ errorMessage: error.message }) })
         } else {
             if (!validator.isEmail(email)) this.setState({ errorEmail: true })
             if (validator.isEmpty(password)) this.setState({ errorPassword: true })
         }
+
+        const user = firebase.auth().currentUser;
+        if (user.emailVerified) {
+            this.props.navigation.navigate('HomeTab')
+        }
+ 
     }
 
 
@@ -60,7 +55,7 @@ class Login extends Component {
                         <Item floatingLabel
                             error={this.state.errorPassword} >
                             <Label> Contraseña </Label>
-                            <Input onChangeText={(password) => { this.setState({ password, errorPassword: false, errorMessage: '' }) }} />
+                            <Input secureTextEntry onChangeText={(password) => { this.setState({ password, errorPassword: false, errorMessage: '' }) }} />
                         </Item>
                     </Form>
                     <Button block rounded

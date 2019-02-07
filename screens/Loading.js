@@ -6,7 +6,15 @@ class Loading extends Component {
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
-            this.props.navigation.navigate(user ? 'HomeTab' : 'LoginStack')
+            if (user !== null) {
+                if (user.emailVerified) {
+                    this.props.navigation.navigate(user ? 'HomeTab' : 'LoginStack')
+                } else {
+                    this.props.navigation.navigate('LoginStack')
+                }
+            } else {
+                this.props.navigation.navigate('LoginStack')
+            }
         })
     }
 

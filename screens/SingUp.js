@@ -22,7 +22,17 @@ class Register extends Component {
         firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(() => this.props.navigation.navigate('HomeTab'))
+            .then(() => {
+                const user = firebase.auth().currentUser;
+                user.sendEmailVerification()
+                    .then(() => {
+                        alert("Verifica tu correo Electrónico");
+                        this.props.navigation.navigate('Login')
+                    })
+                    .catch((error) => {
+                        alert("Error al enviar correo = (")
+                    });
+            })
             .catch(error => this.setState({ errorMessage: error.message }))
     }
 
@@ -52,7 +62,7 @@ class Register extends Component {
                         </Item>
                     </Form>
                     <Button onPress={this.handleSignUp} block rounded style={{ marginTop: 16, }}>
-                        <Text>Sing un</Text>
+                        <Text>Sing up</Text>
                     </Button>
                     <Text style={{ color: 'red', alignSelf: 'center' }}>{this.state.errorMessage}</Text>
 
