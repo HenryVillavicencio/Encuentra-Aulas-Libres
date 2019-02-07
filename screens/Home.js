@@ -51,7 +51,6 @@ class Home extends Component {
         firebase.database().ref(".info/connected")
             .on("value", snap => {
                 if (snap.val() !== true) {
-                    alert("Sin coxeión a internet")
                     this.setState({ loading: false })
                 }
             });
@@ -128,6 +127,7 @@ class Home extends Component {
                         </Card>
                     }
                     <FlatList
+                        onEndReachedThreshold ={10}
                         data={this.state.data}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => <CardClass{...item} />}

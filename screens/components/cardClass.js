@@ -24,7 +24,7 @@ class CardClass extends Component {
                             />
                         </Body>
                         <Right>
-                            <Thumbnail large source={require('../../assets/img/icons8-student-center-96.png')} />
+                            <Thumbnail large square source={require('../../assets/img/icons8-google-classroom-filled-100.png')} />
                         </Right>
 
                     </CardItem>
