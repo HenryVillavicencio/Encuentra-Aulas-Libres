@@ -4,17 +4,20 @@ import { FlatList } from 'react-native'
 import Dimensions from 'Dimensions'
 import CardClass from './components/cardClass'
 import HeaderSearch from './components/HeaderSearch'
-import horario from './Data/horario'
-import filter from '../tools/filter'
+// import horario from './Data/horario'
 var { height, width } = Dimensions.get('window');
+import firebase from 'react-native-firebase';
+
 
 getscheduleDay = (horario, day) => {
+
     switch (day) {
         case 0: return horario.lunes
         case 1: return horario.martes
         case 2: return horario.miercoles
         case 3: return horario.jueves
         case 4: return horario.viernes
+        default: return []
     }
 }
 
@@ -37,20 +40,41 @@ filterSchedule = (schedule, from, to) => {
 
 class Home extends Component {
     state = {
+        loading: true,
         daySelected: new Date().getDay(),
-        data: getscheduleDay(horario, new Date().getDay()),
+        schedule: [],
+        data: [],
         datafilter: []
     }
 
-    onValueChange = (value) => {
-        this.setState({
-            daySelected: value,
-            data: getscheduleDay(horario, value),
-            datafilter: []
-        })
+    componentDidMount() {
 
+        firebase.database().ref(".info/connected")
+            .on("value", snap => {
+                if (snap.val() !== true) {
+                    alert("Sin coxeión a internet")
+                    this.setState({ loading: false })
+                }
+            });
 
+        firebase.database().ref('/horario')
+            .on('value', snapshot => {
+                let schedule = snapshot.val();
+                let data = getscheduleDay(schedule, this.state.daySelected);
+                this.setState({ schedule, data, loading: false });
+            })
     }
+
+
+
+    onValueChange = (daySelected) => {
+        this.setState({ loading: true })
+        const { schedule } = this.state
+        let data = getscheduleDay(schedule, daySelected)
+        this.setState({ daySelected, data, datafilter: [] })
+        this.setState({ loading: false })
+    }
+
 
     handleSelection = (from, to) => {
         if (from && to)
@@ -69,9 +93,9 @@ class Home extends Component {
     render() {
         return (
             <Container>
-                <HeaderSearch 
+                <HeaderSearch
                     Selection={this.handleSelection}
-                 />
+                />
                 <View style={{ width: width * 0.5, alignSelf: 'center' }}>
                     <Picker
                         selectedValue={this.state.daySelected}
@@ -87,13 +111,17 @@ class Home extends Component {
                 </View>
                 <Content padder >
                     {
+                        this.state.loading &&
+                        <Spinner></Spinner>
+                    }
+                    {
                         this.state.datafilter.length > 0 &&
                         <Card transparent>
                             <CardItem style={{ backgroundColor: 'green', borderRadius: 10 }} >
                                 <Body >
                                     <FlatList
                                         data={this.state.datafilter}
-                                        keyExtractor={(item, index) => index.toString() }
+                                        keyExtractor={(item, index) => index.toString()}
                                         renderItem={({ item }) => <Text style={{ color: 'white' }}> {item} </Text>}
                                     />
                                 </Body>

@@ -22,6 +22,9 @@ class Login extends Component {
 
     }
 
+
+    
+
     handleLogin = () => {
         const { email, password } = this.state
         if (validator.isEmail(email) && !validator.isEmpty(password)) {
@@ -29,8 +32,9 @@ class Login extends Component {
                 .auth()
                 .signInWithEmailAndPassword(email, password)
                 .then(() => this.props.navigation.navigate('HomeTab'))
-                .catch(error =>{ this.setState({ errorMessage: error.message }) 
-                console.log(error);
+                .catch(error => {
+                    this.setState({ errorMessage: error.message })
+                    console.log(error);
                 })
             alert(this.state.errorMessage)
         } else {
@@ -56,7 +60,7 @@ class Login extends Component {
                         <Item floatingLabel
                             error={this.state.errorPassword} >
                             <Label> Contraseña </Label>
-                            <Input onChangeText={(password) => { this.setState({ password, errorPassword: false,errorMessage:'' }) }} />
+                            <Input onChangeText={(password) => { this.setState({ password, errorPassword: false, errorMessage: '' }) }} />
                         </Item>
                     </Form>
                     <Button block rounded
@@ -64,7 +68,7 @@ class Login extends Component {
                         style={{ marginTop: 16, marginBottom: 20 }}>
                         <Text>Sing in</Text>
                     </Button>
-                    <Text style={{color:'red',alignSelf:'center'}}>{this.state.errorMessage}</Text>
+                    <Text style={{ color: 'red', alignSelf: 'center' }}>{this.state.errorMessage}</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 16 }} >
                         <Text style={{ color: 'gray' }}> ¿No tienes cuenta?</Text>
                         <Text onPress={this.handlePressSingup} style={{ color: 'blue' }}> Sing up </Text>

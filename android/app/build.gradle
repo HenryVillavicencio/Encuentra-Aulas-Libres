@@ -145,6 +145,8 @@ dependencies {
     implementation "com.google.firebase:firebase-core:16.0.6"
     // auth
     implementation "com.google.firebase:firebase-auth:16.1.0"
+    // database
+    implementation "com.google.firebase:firebase-database:16.0.5"
 
 
 }
