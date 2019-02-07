@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Content, Form, Item, Input, Label, Button, Text, Thumbnail, Footer, View, Header, Card, CardItem, Body, Right, Icon, Left } from 'native-base'
+import { Text, Thumbnail, View, Card, CardItem, Body, Right } from 'native-base'
 import Dimensions from 'Dimensions';
 import { FlatList } from 'react-native'
 

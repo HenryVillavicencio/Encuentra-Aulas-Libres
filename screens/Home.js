@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Container, Content, Form, Item, Input, Label, Button, Text, Thumbnail, Footer, View, Header, Card, CardItem, Body, Right, Icon, Left, Picker, Spinner } from 'native-base'
+import { Container, Content, Text, View, Card, CardItem, Body, Picker, Spinner } from 'native-base'
 import { FlatList } from 'react-native'
 import Dimensions from 'Dimensions'
 import CardClass from './components/cardClass'
 import HeaderSearch from './components/HeaderSearch'
-// import horario from './Data/horario'
 var { height, width } = Dimensions.get('window');
 import firebase from 'react-native-firebase';
 
