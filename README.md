@@ -6,3 +6,8 @@ En respuesta a los mencionados inconvenientes, nace “Encuentra Aulas Libres”
 ## ¿Quieres probar la aplicación?
 
 Se parte de la comunidad que nos ayuda a probar y mejorar “ Encuentra Aulas Libres ”. Descarga el apk en http://bit.ly/2Gguqf8 , instálala en tu dispositivo  Android, pruébala, envíanos tu feedbacka http://bit.ly/2I0X4Td
+
+## Demo 
+
+
+<a href="https://imgflip.com/gif/2t6hy9"><img src="https://i.imgflip.com/2t6hy9.gif" title="made at imgflip.com"/></a>
