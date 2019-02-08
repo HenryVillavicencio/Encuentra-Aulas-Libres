@@ -32,7 +32,8 @@ class Login extends Component {
         }
 
         const user = firebase.auth().currentUser;
-        if (user.emailVerified) {
+        
+        if ( user && user.emailVerified) {
             this.props.navigation.navigate('HomeTab')
         }
  
